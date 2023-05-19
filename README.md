@@ -118,3 +118,88 @@ wireless
         </dependency>
 
     </dependencies>
+  
+  ## Converter arquivo .CSV para .ARFF
+  
+  
+```java
+  
+   private void converterCSVparaARFF(){
+        try{
+        String atributosArray[]   = {"protocolVersion, type, toDS, fromDS, moreFragment, retry, powerManagement, moreData, wep, order, duration, transmitterAddress, destinationAddress, sourceAddress, receiverAddress, bssId, sequenceNumber, info"};
+        String valorArray = Arrays.toString(atributosArray);
+
+        //CSVLoader csvLoader = new CSVLoader();
+        //csvLoader.setSource(new File("F:/preprocessamentoieee80211.csv"));
+        //Instances dataset   =   csvLoader.getDataSet();
+
+        BufferedReader bufferedReader = new BufferedReader(
+                new FileReader("Arquivos/preprocessamentoieee80211.csv"));
+
+        BufferedWriter bufferedWriter = new BufferedWriter(
+                    new FileWriter("Arquivos/preprocessamentoieee80211.arff")
+            );
+
+        String inline="";
+
+        String valorInicial= "@relation preprocessamentoieee80211";
+        bufferedWriter.write(valorInicial+"\n");
+
+        for(int i=0; i < valorArray.length() - 1;i++){
+            if(i>17){
+                break;
+            }
+          val novoValor = valorArray.split(",");
+          String valorCorrespondido    = novoValor[i].replace("[","")
+                            .replace("]","")
+                            .replace("\"","");
+
+            if(i<17){
+            bufferedWriter.write("\n");
+            bufferedWriter.write("@attribute "+ valorCorrespondido+" REAL");
+            bufferedWriter.write("\n");
+            }else{
+                //-- Os valore que correspondem ao (length) ou algo para retornar o valor, sendo indicado para um Array de posicoes unica
+                //--,em uma necessidade especifica para a criacao do atributo tipo class -->>> Ex: info {valor 1 ...n}
+                // "{model.getInfo()-->0,1,2,3}";
+                Set<String> stringSet = new HashSet<>();
+                for (int j=0;j<modelList.size();j++) {
+                    stringSet.add(modelList.get(j).getInfo());
+                }
+
+                bufferedWriter.write("@attribute " + valorCorrespondido + "{"+stringSet.toString()
+                        .replace("[","")
+                        .replace("]","")+"}");
+                bufferedWriter.write("\n");
+                bufferedWriter.write("@data");
+                bufferedWriter.write("\n");
+                stringSet =null;
+            }
+        }
+        int i=0;
+        while ((inline =bufferedReader.readLine())!=null) {
+
+            if(i==0){
+            bufferedWriter.write("\n");
+            }else{
+//            inline = inline//.replaceAll("([a-zA-Z])", "")
+//                    //.replace(",","")
+//                   // .replace("\"", "")
+//                    .replace("[", "")
+//                    .replace("]", "");
+
+            bufferedWriter.write(inline + "\n");
+            //bufferedWriter.flush();
+           }
+            i++;
+        }
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
+
+        }catch (IOException ioException){
+            ioException.getMessage();
+        }
+    }
+                  
+```
