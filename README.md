@@ -1,7 +1,88 @@
-<h1 align="center"> Projeto NIDS</h1>
+<h1 align="center"> Projeto ML IEEE 802.11 Métricas de Desempenho</h1>
 
 <h4 align="justify">
-Apresentação de uma abordagem baseada em técnicas de aprendizagem de máquina aplicadas à busca de ameaças, no objetivo de tentar detectar uma intrusão e portanto ajudar a prevenir que ataques ocorram. Foram testados algoritmos para classificação de ataques na rede, com três técnicas distintas: árvores de decisão, tabelas de decisão e Naive Bayes. A eficácia de cada técnica se deu por meio de experimentos usando a base de dados KDD'99. A avaliação do estudo se baseia na matriz de confusão que através de uma pequena porção (cerca de 10%) da base de dados obteve uma acurácia, precisão e recall acima de 80% sobre os classificadores analisados, afirmando a viabilidade de máquinas de aprendizagem em busca de classificação de anomalias em redes do tipo wireless.
+A segurança presente em redes IEEE 802.11 faz
+-
+se diariamente mais relevante. Porém, a segurança n
+a rede IEEE 
+802.11 não tem acompanhado as ameaças com tanta significância. Por este motivo surge a proposta deprojetar um 
+Sistema  de  Detecção  de  Intrusão
+-
+IDS  baseada  em  aprendizagem  de  máquina  que  será  capaz  de  possuir  auto
+-
+aperfeiçoamento,  visto  que,  irá 
+criar  um  ambiente  seguro,  capaz  de  detectar  todas  as  ameaças  dissimuladas,
+Deauthentication, 
+EAPOL
+-
+Logoff 
+e
+Beacon Flood,
+em que foram lançadas em uma rede corporativa real. 
+Com
+isto, 
+correlacionado as métricas de desempenho, e entre uma delas, que preza pela qualidade da classificação, o 
+<i>Matthews 
+  Correlation Coefficient</i>.
+A anomalia 
+Deauthentication
+acima do classificador 
+Naive Bayes
+foi obtido de (
+88,71%
+), já a 
+valia  de  qualidade
+do  classificador 
+Logistic Regression
+(
+Logistic
+)  equacionado  a  (
+88,69%)
+,  e  não
+obstante,  o 
+J48
+apresentou um valor menor de (
+88,47
+%). Apesar disso, a identificação do ataque 
+Beacon Flood
+, se deu por conta do 
+algoritmo 
+Naive Bayes
+exibindo a maior taxa de
+de
+tecção  (
+100,00
+%),  seguido  do 
+Logistic
+(
+99,95
+%)  e 
+J48 
+possuindo   o   menor   valor   (
+98,85
+%).   Conseguinte,   na   detecção   da   anomalia   EAPOL
+-
+Logoff
+,   os 
+classificadoresapresentaram similitude de (100,00%) e a demais, com a apresentação de uma detecção, em virtude de 
+d
+ados nãoanômalos (Normal), o 
+Naive Bayes
+foi acometido de (
+89,92%
+), seguido do 
+Logistic
+mantendo (
+89,89%),
+enquanto, o 
+J48
+foi testado com uma taxa menor de (
+89,67
+%). Com as evidências do estudo proveem a possibilidade 
+de que épossível desenvolver um siste
+ma de detecção de intrusão baseado em redes 
+wireless
+.
 <h4 align="justify">
   
   ## ✔️ Tecnologias utilizadas
