@@ -122,7 +122,38 @@ wireless
   ## Converter arquivo .CSV para .ARFF
   
   
+  <H2> Reconhecimento do merge de arquivos </H2>
 ```java
+  
+  
+  
+  private Dataset<Row> lerArquivoConjuntodeDadosIEEE80211() {
+
+        try {
+            rowDataset = sessaoSpark
+                    .abrirSessao()
+                    .read()
+                    .format("csv")
+                    .option("header", true)
+                    .option("inferSchema", true)
+                    .option("delimiter", ",")
+                    .option("escape", "\"")
+                    //.option("multiline",true)
+                    //.option("quote"," ")
+                    //.option("quote","\"")
+                    //.option("sep",",")
+                    .csv(
+                             "Arquivos/ATAQUE_DEAUTH_5094.csv"
+                            ,"Arquivos/ATAQUE_BEACON_FLOOD_1047.csv"
+                             ,"Arquivos/ATAQUE_EAPOL_start_1429.csv"
+                             ,"Arquivos/ATAQUE_NORMAL_9134.csv");
+            //rowDataset.show(false);
+            //rowDataset.printSchema();
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        return rowDataset;
+    }
   
    private void converterCSVparaARFF(){
         try{
