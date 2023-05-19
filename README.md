@@ -122,9 +122,8 @@ wireless
   ## Converter arquivo .CSV para .ARFF
   
   
-  <H2> Reconhecimento do merge de arquivos </H2>
+
 ```java
-  
   
   
   private Dataset<Row> lerArquivoConjuntodeDadosIEEE80211() {
